@@ -15,7 +15,7 @@ const Hero = () => {
                   MarketFree
                 </h1>
                 <p className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
-                  El servicio web para encontrar el DJ que deseas
+                Permitir que cualquier DJ pueda dar a conocer su servicio por medio de una plataforma de alta calidad que pueda conectarlos con potenciales usuarios quienes con base en sus preferencias buscan musicalizar sus eventos de manera única y personalizada.
                 </p>
                 {/* <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
                   <Link
