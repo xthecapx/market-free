@@ -25,7 +25,7 @@ const AboutSectionOne = () => {
             <div className="w-full px-4 lg:w-1/2">
               <SectionTitle
                 title="Somos MarketFree"
-                paragraph="La mejor plataforma para encontrar el músico perfecto para todos tus eventos."
+                paragraph="La mejor plataforma para encontrar el DJ perfecto para todos tus eventos."
                 mb="44px"
               />
 

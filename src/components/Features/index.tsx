@@ -9,7 +9,7 @@ const Features = () => {
         <div className="container">
           <SectionTitle
             title="¿Qué ofrecemos?"
-            paragraph="Una aplicación web para encontrar el DJ perfecto para tus eventos"
+            paragraph="Una aplicación web para encontrar el DJ perfecto."
             center
           />
 
