@@ -96,7 +96,7 @@ const Header = () => {
                     }`}
                   />
                 </button>
-                {/* <nav
+                <nav
                   id="navbarCollapse"
                   className={`navbar absolute right-0 z-30 w-[250px] rounded border-[.5px] border-body-color/50 bg-white px-6 py-4 duration-300 dark:border-body-color/20 dark:bg-dark lg:visible lg:static lg:w-auto lg:border-none lg:!bg-transparent lg:p-0 lg:opacity-100 ${
                     navbarOpen
@@ -156,7 +156,7 @@ const Header = () => {
                       </li>
                     ))}
                   </ul>
-                </nav> */}
+                </nav>
               </div>
               {/* <div className="flex items-center justify-end pr-16 lg:pr-0">
                 <Link
