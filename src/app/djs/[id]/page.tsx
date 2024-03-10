@@ -97,7 +97,7 @@ const SingleBlog = () => {
             </div>
           </div>
 
-          <div className='grid grid-cols-4 gap-8'>
+          <div className='grid grid-cols-1 gap-4 md:grid-cols-4 md:gap-8'>
             <div className='gap-1'>
               <h2 className='mb-4 block text-xl font-bold text-black hover:text-primary dark:text-white dark:hover:text-primary sm:text-2xl'>Disponibilidad</h2>
               <LocalizationProvider dateAdapter={AdapterDayjs} >
