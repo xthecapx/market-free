@@ -1,6 +1,7 @@
 'use client';
 
 import { useParams } from 'next/navigation'
+import dayjs, { Dayjs } from 'dayjs';
 import Image from "next/image";
 import Link from "next/link";
 import blogData from "@/components/Blog/blogData";
@@ -11,6 +12,8 @@ import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Review } from '@/components/Review';
+import Button from '@mui/material/Button';
+import BookIcon from '@mui/icons-material/Book';
 
 
 const darkTheme = createTheme({
@@ -23,7 +26,19 @@ const SingleBlog = () => {
   const params = useParams();
   const { id } = params;
   const blog = blogData[id as string];
-  const { title, image, paragraph, author, tags, publishDate, rating, bookings, price } = blog;
+  const { title, image, paragraph, author, tags, publishDate, rating, bookings, price, availableDates } = blog;
+  const [value, setValue] = React.useState<Dayjs | null>(dayjs(availableDates[0]));
+
+  const isValid = (date: Dayjs) => {
+    const isAvailable = availableDates.some(available => {
+      const compare = dayjs(available);
+
+      return date.isSame(compare)
+    })
+
+    return !isAvailable
+  };
+
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
@@ -99,13 +114,20 @@ const SingleBlog = () => {
 
           <div className='grid grid-cols-1 gap-4 md:grid-cols-4 md:gap-8'>
             <div className='gap-1'>
-              <h2 className='mb-4 block text-xl font-bold text-black hover:text-primary dark:text-white dark:hover:text-primary sm:text-2xl'>Disponibilidad</h2>
-              <LocalizationProvider dateAdapter={AdapterDayjs} >
-                <DateCalendar readOnly className='text-white'/>
-              </LocalizationProvider>
+              <div className='grid grid-flow-row gap-3 w-full'>
+                <h2 className='mb-4 block text-xl font-bold text-black hover:text-primary dark:text-white dark:hover:text-primary sm:text-2xl'>Disponibilidad</h2>
+                <LocalizationProvider dateAdapter={AdapterDayjs} >
+                  <DateCalendar shouldDisableDate={isValid} value={value} onChange={(newValue) => setValue(newValue)} />
+                </LocalizationProvider>
+                <Link href={`/thank-you?date=${value.format('DD/MM/YYYY')}`} passHref>
+                  <Button variant="outlined" startIcon={<BookIcon />}>
+                    Contratar
+                  </Button>
+                </Link>
+              </div>
             </div>
             <div className='grid grid-flow-row gap-3 w-full col-span-2'>
-            <h2 className='mb-4 block text-xl font-bold text-black hover:text-primary dark:text-white dark:hover:text-primary sm:text-2xl'>Recomendaciones</h2>
+              <h2 className='mb-4 block text-xl font-bold text-black hover:text-primary dark:text-white dark:hover:text-primary sm:text-2xl'>Recomendaciones</h2>
               <Review />
               <Review />
               <Review />
