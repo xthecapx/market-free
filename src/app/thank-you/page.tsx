@@ -4,11 +4,10 @@ import { useSearchParams } from 'next/navigation'
 
 import AboutSectionOne from "@/components/About/AboutSectionOne";
 import Breadcrumb from "@/components/Common/Breadcrumb";
+import { Suspense } from 'react';
 
-
-const AboutPage = () => {
+const Page = () => {
   const searchParams = useSearchParams()
-
   const date = searchParams.get('date')
 
   return (
@@ -19,7 +18,16 @@ const AboutPage = () => {
       />
       <AboutSectionOne />
     </>
-  );
+  )
+}
+
+
+const AboutPage = () => {
+  return (
+    <Suspense>
+      <Page />
+    </Suspense>
+  )
 };
 
 export default AboutPage;
